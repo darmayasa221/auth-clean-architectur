@@ -57,7 +57,7 @@ container.register([
       injectType: 'destructuring',
       dependencies: [
         {
-          name: 'userRepositorys',
+          name: 'userRepository',
           internal: UserRepository.name,
         },
         {
