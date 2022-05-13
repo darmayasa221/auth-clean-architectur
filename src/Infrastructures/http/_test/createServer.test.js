@@ -1,5 +1,4 @@
 const UsersTableTestHelper = require('../../../../tests/UsersTableTestHelper');
-const container = require('../../container');
 const pool = require('../../database/postgres/pool');
 const createServer = require('../createServer');
 
@@ -21,6 +20,7 @@ describe('HTTP server', () => {
     // Assert
     expect(response.statusCode).toEqual(404);
   });
+
   it('should handle server error correctly', async () => {
     // Arrange
     const requestPayload = {
