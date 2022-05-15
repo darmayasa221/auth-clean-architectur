@@ -19,7 +19,6 @@ describe('users request', () => {
         fullname: 'user1 test',
       };
       const server = await createServer(container);
-
       // Action
       const response = await server.inject({
         method: 'POST',
