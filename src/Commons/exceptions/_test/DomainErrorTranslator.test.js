@@ -1,4 +1,3 @@
-const AuthenticationError = require('../AuthenticationError');
 const DomainErrorTranslator = require('../DomainErrorTranslator');
 const InvariantError = require('../InvariantError');
 
@@ -13,7 +12,7 @@ describe('DomainErrorTranslator', () => {
     expect(DomainErrorTranslator.translate(new Error('REGISTER_USER.USERNAME_CONTAIN_RESTRICTED_CHARACTER')))
       .toStrictEqual(new InvariantError('can\'t maked user because contain dangerous character at username'));
     expect(DomainErrorTranslator.translate(new Error('LOGIN_USER.NOT_CONTAIN_NEEDED_PROPERTY')))
-      .toStrictEqual(new AuthenticationError('dont\'t be empty'));
+      .toStrictEqual(new InvariantError('dont\'t be empty'));
     expect(DomainErrorTranslator.translate(new Error('LOGIN_USER.NOT_MEET_DATA_TYPE_SPECIFICATION')))
       .toStrictEqual(new InvariantError('data of type is not a string'));
   });

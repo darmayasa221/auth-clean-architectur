@@ -4,11 +4,11 @@ const pool = require('../../database/postgres/pool');
 const createServer = require('../createServer');
 
 describe('users request', () => {
-  afterEach(async () => {
-    await UsersTableTestHelper.cleanTable();
-  });
   afterAll(async () => {
     await pool.end();
+  });
+  afterEach(async () => {
+    await UsersTableTestHelper.cleanTable();
   });
   describe('when POST /users', () => {
     it('should response 201  and persisted user', async () => {
