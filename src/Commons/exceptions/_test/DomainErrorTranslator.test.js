@@ -15,6 +15,10 @@ describe('DomainErrorTranslator', () => {
       .toStrictEqual(new InvariantError('dont\'t be empty'));
     expect(DomainErrorTranslator.translate(new Error('LOGIN_USER.NOT_MEET_DATA_TYPE_SPECIFICATION')))
       .toStrictEqual(new InvariantError('data of type is not a string'));
+    expect(DomainErrorTranslator.translate(new Error('DELETE_AUTHENTICATION_USE_CASE.NOT_CONTAIN_REFRESH_TOKEN')))
+      .toStrictEqual(new InvariantError('have to send refresh token'));
+    expect(DomainErrorTranslator.translate(new Error('DELETE_AUTHENTICATION_USE_CASE.NOT_MEET_DATA_TYPE_SPECIFICATION')))
+      .toStrictEqual(new InvariantError('refresh Token to be a string'));
   });
   it('should return original error when error message is not needed to translate', () => {
     // Arrange

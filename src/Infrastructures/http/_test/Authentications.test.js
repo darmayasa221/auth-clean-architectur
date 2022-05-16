@@ -31,7 +31,6 @@ describe('/authentications endpoint', () => {
           fullname: 'Dicoding Indonesia',
         },
       });
-
       // Action
       const response = await server.inject({
         method: 'POST',
@@ -135,6 +134,79 @@ describe('/authentications endpoint', () => {
       expect(response.statusCode).toEqual(400);
       expect(responseJson.status).toEqual('fail');
       expect(responseJson.message).toEqual('data of type is not a string');
+    });
+  });
+  describe('when DELETE /authentications', () => {
+    it('should response 200 if refresh token valid', async () => {
+      // Arrange
+      const server = await createServer(container);
+      const refreshToken = 'refreshToken';
+      await AuthenticationsTableTestHelper.addToken(refreshToken);
+
+      // Action
+      const response = await server.inject({
+        method: 'DELETE',
+        url: '/authentications',
+        payload: {
+          refreshToken,
+        },
+      });
+      // Arrange
+      const responseJson = JSON.parse(response.payload);
+      expect(response.statusCode).toEqual(200);
+      expect(responseJson.status).toEqual('success');
+    });
+    it('should response 400 if refreshToken not available', async () => {
+      // Arrange
+      const server = await createServer(container);
+      // Action
+      const response = await server.inject({
+        method: 'DELETE',
+        url: '/authentications',
+        payload: {
+          refreshToken: 'refreshToken',
+        },
+      });
+      // Arrange
+      const responseJson = JSON.parse(response.payload);
+      expect(response.statusCode).toEqual(400);
+      expect(responseJson.status).toEqual('fail');
+      expect(responseJson.message).toEqual('refresh token not found!');
+    });
+    it('should response 400 if payload not contain refresh token', async () => {
+      // Arrange
+      const server = await createServer(container);
+
+      // Action
+      const response = await server.inject({
+        method: 'DELETE',
+        url: '/authentications',
+        payload: {},
+      });
+
+      const responseJson = JSON.parse(response.payload);
+      expect(response.statusCode).toEqual(400);
+      expect(responseJson.status).toEqual('fail');
+      expect(responseJson.message).toEqual('have to send refresh token');
+    });
+
+    it('should response 400 if refresh token not string', async () => {
+      // Arrange
+      const server = await createServer(container);
+
+      // Action
+      const response = await server.inject({
+        method: 'DELETE',
+        url: '/authentications',
+        payload: {
+          refreshToken: 123,
+        },
+      });
+
+      const responseJson = JSON.parse(response.payload);
+      expect(response.statusCode).toEqual(400);
+      expect(responseJson.status).toEqual('fail');
+      expect(responseJson.message).toEqual('refresh Token to be a string');
     });
   });
 });

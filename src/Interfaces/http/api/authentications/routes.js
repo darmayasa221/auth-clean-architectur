@@ -4,6 +4,11 @@ const routes = (handler) => ([
     path: '/authentications',
     handler: handler.postAuthenticationHandler,
   },
+  {
+    method: 'DELETE',
+    path: '/authentications',
+    handler: handler.deleteAuthenticationHandler,
+  },
 ]);
 
 module.exports = routes;

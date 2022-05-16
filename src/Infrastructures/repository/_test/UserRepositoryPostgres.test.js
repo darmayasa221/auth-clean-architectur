@@ -6,11 +6,11 @@ const pool = require('../../database/postgres/pool');
 const UserRepositoryPostgres = require('../UserRepositoryPostgres');
 
 describe('UserRepositoryPostgres', () => {
-  afterEach(async () => {
-    await UsersTableTestHelper.cleanTable();
-  });
   afterAll(async () => {
     await pool.end();
+  });
+  afterEach(async () => {
+    await UsersTableTestHelper.cleanTable();
   });
   describe('verifyAvailableUsername function', () => {
     it('should throw InvariantError when username not available', async () => {

@@ -13,6 +13,8 @@ DomainErrorTranslator._directories = {
   'REGISTER_USER.USERNAME_CONTAIN_RESTRICTED_CHARACTER': new InvariantError('can\'t maked user because contain dangerous character at username'),
   'LOGIN_USER.NOT_CONTAIN_NEEDED_PROPERTY': new InvariantError('dont\'t be empty'),
   'LOGIN_USER.NOT_MEET_DATA_TYPE_SPECIFICATION': new InvariantError('data of type is not a string'),
+  'DELETE_AUTHENTICATION_USE_CASE.NOT_CONTAIN_REFRESH_TOKEN': new InvariantError('have to send refresh token'),
+  'DELETE_AUTHENTICATION_USE_CASE.NOT_MEET_DATA_TYPE_SPECIFICATION': new InvariantError('refresh Token to be a string'),
 };
 
 module.exports = DomainErrorTranslator;
