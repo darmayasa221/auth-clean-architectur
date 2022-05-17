@@ -15,6 +15,8 @@ DomainErrorTranslator._directories = {
   'LOGIN_USER.NOT_MEET_DATA_TYPE_SPECIFICATION': new InvariantError('data of type is not a string'),
   'DELETE_AUTHENTICATION_USE_CASE.NOT_CONTAIN_REFRESH_TOKEN': new InvariantError('have to send refresh token'),
   'DELETE_AUTHENTICATION_USE_CASE.NOT_MEET_DATA_TYPE_SPECIFICATION': new InvariantError('refresh Token to be a string'),
+  'REFRESH_AUTHENTICATION_USE_CASE.NOT_CONTAIN_REFRESH_TOKEN': new InvariantError('have to send refresh Token'),
+  'REFRESH_AUTHENTICATION_USE_CASE.NOT_MEET_DATA_TYPE_SPECIFICATION': new InvariantError('must be a string of refreshToken'),
 };
 
 module.exports = DomainErrorTranslator;
