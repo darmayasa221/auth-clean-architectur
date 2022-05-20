@@ -27,7 +27,7 @@ const UsersTableTestHelper = {
     return rows;
   },
   async cleanTable() {
-    await pool.query('TRUNCATE TABLE users, authentications, threads');
+    await pool.query('TRUNCATE TABLE users, authentications, threads, comments');
   },
 };
 

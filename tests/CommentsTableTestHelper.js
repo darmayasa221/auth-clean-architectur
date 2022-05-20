@@ -22,7 +22,7 @@ const CommentsTableTestHelper = {
 
   async findCommentById(id) {
     const query = {
-      text: `SELECET * FROM comments
+      text: `SELECT * FROM comments
       WHERE id = $1`,
       values: [id],
     };
