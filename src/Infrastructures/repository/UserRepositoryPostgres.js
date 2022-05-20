@@ -36,7 +36,7 @@ class UserRepositoryPostgres extends UserRepository {
       values: [id, username, password, fullname],
     };
     const { rows } = await this._pool.query(query);
-    return new RegisteredUser({ ...rows[0] });
+    return new RegisteredUser(rows[0]);
   }
 
   async getPasswordByUsername(username) {
